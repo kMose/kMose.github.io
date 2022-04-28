@@ -14,7 +14,7 @@
 	<div class="sidebar">
 	  <a href="index.html" ><img src="littleB.png" style="width:50%;"></a>
 	  <a class="active" href="emulation.html">Emulation</a>
-	  <a href="gaming.html">Gaming Resources</a>
+	  <a href="gaming.html">Game Links</a>
 	  <a href="aiming.html">Aiming Guide</a>
 	  <a href="youtubes.html">Youtube</a>
 	</div>
@@ -96,7 +96,35 @@
 
 		
 		
+	<script>
+		// Imports google player API
+		var tag = document.createElement('script');
 
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		// Autoplays the video at a muted volume.
+		// Originally I wanted to make it play at 10 volume. 
+		// Youtube autoplay=1 would have done what this function does at the end of the day.
+		var player;
+		function onYouTubeIframeAPIReady(){
+		player = new YT.Player('player', {
+			  height: '315',
+			  width: '560',
+			  videoId: 'RNuUgbUzM8U',
+			  playerVars: {
+				'playsinline': 1
+			  },
+			  events: {
+				'onReady': function (event) {
+					event.target.playVideo();
+					event.target.setVolume(0);
+				}
+			  }
+			});
+		  }
+	</script>
 
 
 		

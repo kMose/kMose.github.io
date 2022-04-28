@@ -10,13 +10,15 @@
 		<title >Ben's Lair</title>
 		
 	</head>
+
+	
 	
 	<body>
 	<!-- The sidebar -->
 	<div class="sidebar">
 	  <a class="active" href="index.html" ><img src="littleB.png" style="width:50%;"></a>
 	  <a href="emulation.html">Emulation</a>
-	  <a href="gaming.html">Gaming Resource</a>
+	  <a href="gaming.html">Game Links</a>
 	  <a href="aiming.html">Aiming Guide</a>
 	  <a href="youtubes.html">Youtube</a>
 	</div>
@@ -38,10 +40,15 @@
 				<p>
 				Here's a cool tune.
 				</p>
+				
+				<i> Javascript makes this video autoplay! </i>
 			</div>
 			
+			
+			
 			<div class ="d-flex">
-			<div class="p-1 youtube-frame-border"  style="margin:auto;"> <iframe style="margin:auto;" width="560" height="315" src="https://www.youtube.com/embed/RNuUgbUzM8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+			<div class="p-1 youtube-frame-border" style="margin:auto"><div id="player">hi im paul</div></div>
+			<!---<div class="p-1 youtube-frame-border"  style="margin:auto;"> <iframe style="margin:auto;" width="560" height="315" src="https://www.youtube.com/embed/RNuUgbUzM8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div> --->
 			</div>
 			
 			<!--Blue boxes with red text-->
@@ -54,11 +61,11 @@
 							<td class="linkDesc" style="padding: 3px;"> Page dedicated to all things Emulation.</td>
 							</tr>
 							<tr>
-							<td class="boxLink" style="padding: 0px; text-align: center"> <a href="gaming.html">Gaming Resource</a></td>
+							<td class="boxLink" style="padding: 0px; text-align: center"> <a href="gaming.html">Game Links</a></td>
 							<td class="linkDesc" style="padding: 3px;"> Repository of gaming websites for meta information.</td>
 							</tr>
 							<tr>
-							<td class="boxLink" style="padding: 0px; text-align: center"> <a href="aiming.html">Aiming Guide</a></td>
+							<td class="boxLink" style="padding: 0px; text-align: center"> <a href="aiming.html">Aim Guide</a></td>
 							<td class="linkDesc" style="padding: 3px;"> Want to aim better in shooters? Look here!</td>
 							</tr>
 							<tr>
@@ -69,18 +76,49 @@
 					</table>
 				</div>
 			</div>
-
 		</div>
-		
 	
-		
-		
-		
+		<div class="d-flex justify-content-between">
+			
+			<div class="align-self-end"><img src="samus.gif" class="p-1 logoImage"></div>
+			<div class="align-self-baseline"><img src="ridley.webp" class="p-1 logoImage"></div>
+		</div>
+			
+	
+	
 	</div>
-	
-	
-	
-	
+
+			
+
+	<script>
+		// Imports google player API
+		var tag = document.createElement('script');
+
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		// Autoplays the video at a muted volume.
+		// Originally I wanted to make it play at 10 volume. 
+		// Youtube autoplay=1 would have done what this function does at the end of the day.
+		var player;
+		function onYouTubeIframeAPIReady(){
+		player = new YT.Player('player', {
+			  height: '315',
+			  width: '560',
+			  videoId: 'RNuUgbUzM8U',
+			  playerVars: {
+				'playsinline': 1
+			  },
+			  events: {
+				'onReady': function (event) {
+					event.target.playVideo();
+					event.target.setVolume(0);
+				}
+			  }
+			});
+		  }
+	</script>
 
 
 
